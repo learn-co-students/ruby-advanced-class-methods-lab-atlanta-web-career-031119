@@ -2,7 +2,7 @@ class Song
   attr_accessor :name, :artist_name
   @@all = []
   def self.all
-    @@all
+    return @@all
   end
   def save
     self.class.all << self
@@ -17,9 +17,11 @@ class Song
     return song
   end
   def self.create_by_name(name)
-    song=self.all
+    song=self.create
     song.name=name
-    self.all<<song
     return song
+  end
+  def find_by_name(song)
+    return self.all.find{|s| s.name == song}
   end
 end
