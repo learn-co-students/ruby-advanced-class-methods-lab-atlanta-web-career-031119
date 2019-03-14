@@ -9,13 +9,17 @@ class Song
   end
   def self.create
     self.all<<self.new
-    return self.all
+    return self.all.last
   end
   def self.new_by_name(name)
-    self.new.name=(name)
+    song=self.new
+    song.name=name
+    return song
   end
   def self.create_by_name(name)
-    self.all<<self.new.name=(name)
-    return self.all
+    song=self.all
+    song.name=name
+    self.all<<song
+    return song
   end
 end
