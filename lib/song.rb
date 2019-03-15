@@ -1,11 +1,7 @@
 require 'pry'
 class Song
-  attr_reader :name, :artist_name
+  attr_accessor :name, :artist_name
   @@all = []
-  def initialize(title, artist)
-    @name=title
-    @artist_name=artist
-  end
   def self.all
     return @@all
   end
@@ -38,5 +34,11 @@ class Song
   end
   def self.alphabetical
     return @@all.name.sort
+  end
+  def self.new_from_filename(filename)
+    file_array=filename.split("-")
+    file_array[1]=file_array[1].split(".")[0]
+    return file_array
+    binding.pry
   end
 end
